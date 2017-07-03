@@ -21,10 +21,10 @@ module.exports = (app, options) => {
 
         options.repository.getUserByEmail(email).then((user) => {
             if (!user) {
-                res.status(400).send('User not found.');
+                res.status(404).send('User not found.');
+            } else {
+                res.status(200).send(user);
             }
-
-            res.status(200).send(user);
         })
         .catch(next);
 
